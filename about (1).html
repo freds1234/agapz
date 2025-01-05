@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fredrick Agapito - Portfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+            }
+            body {
+                background-image: url('bg.jpg');
+                background-size: cover;
+                 background-position: center;
+                 background-attachment: fixed;
+                 height: 100vh;
+                 position: relative;
+                }
+            body::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: -1;
+            }
+
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 15px 12%;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1000;
+            }
+            .logo {
+                font-size: 30px;
+                color: rgb(0, 225, 255);
+                font-weight: 600;
+                transition: 0.3s ease;
+                text-decoration: none;
+            }
+            .logo:hover {
+                color: rgb(255, 255, 255);
+                text-shadow: 0 0 25px white, 0 0 50px white;
+                transform: scale(1.1);
+            }
+            span {
+                color: rgb(255, 255, 255);
+            }
+            .navbar {
+                display: flex;
+                justify-content: flex-end;
+            }
+            .navbar a {
+                font-size: 1rem;
+                color: white;
+                font-weight: 500;
+                margin: 0 20px;
+                text-decoration: none;
+            }
+            .navbar a:hover,
+            .navbar a.active {
+                color: rgb(0, 225, 255);
+            }
+            .burger {
+                display: none;
+                font-size: 1.8rem;
+                color: white;
+                cursor: pointer;
+            }
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                transition: right 0.3s ease-in-out;
+                z-index: 2000;
+            }
+            .mobile-nav a {
+                font-size: 1.2rem;
+                color: rgb(255, 255, 255); /* Default color for links */
+                margin-bottom: 20px;
+                text-decoration: none;
+                transition: color 0.3s ease; /* Smooth transition for hover or active changes */
+            }
+            .mobile-nav a.active {
+                color: rgb(0, 225, 255); /* Highlight color for active link */
+                font-weight: bold;       /* Optional: Make the active link bold */
+            }
+            .mobile-nav a:hover {
+                color: rgb(0, 175, 225); /* Slightly different color for hover state */
+            }
+            .close-btn {
+                font-size: 2rem;
+                color: white;
+                margin-bottom: 30px;
+                align-self: flex-end;
+                cursor: pointer;
+            }
+            .home {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                height: 100vh;
+                padding: 120px 50px 50px 50px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                border-radius: 15px;
+                overflow: hidden;
+                position: relative;
+            }
+
+        /* Home Section Styles */
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align content to the top */
+            height: 100vh;
+            padding: 120px 50px 50px 50px; /* Increased top padding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 650px;
+            margin-right: 50px;
+            z-index: 10;
+        }
+
+        .about-content h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color:skyblue;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: justify; /* Justifying the text */
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            text-align: justify; /* Justifying the text */
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                padding: 10px;
+            }   
+            .about-content h1 {
+                margin-top: 100px;
+                font-size: 30px;
+            }
+            .about-content {
+                margin-right: 0;
+                text-align: center;
+            }
+            .about-content p {
+                margin-top: 0;
+                font-size: 15px;
+            }
+            .about-content { 
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+            }
+     
+        } 
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 40px 0;
+            background-color: black;
+        }
+        .footer .social {
+            text-align: center;
+            padding-bottom: 25px;
+            color: white;
+        }
+        .footer .social a {
+            font-size: 24px;
+            color: white;
+            border: 2px solid rgb(0, 225, 255);
+            width: 40px;
+            height: 40px;
+            line-height: 38px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            margin: 0;
+            box-shadow: inset 0 0 10px skyblue, 0 0 10px skyblue;
+            transition: 0.3s ease;
+        }
+        .footer .social a:hover {
+            transform: scale(1.2) translate(-10px);
+            color: rgb(0, 225, 255);
+            border: 2px solid rgb(0, 225, 255);
+        }
+        .footer ul {
+            margin-top: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .footer ul li a {
+            color: white;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s ease;
+        }
+        .footer ul li a:hover {
+            border-bottom: 3px solid rgb(0, 225, 255);
+        }
+        .footer ul li {
+            display: inline-block;
+            padding: 0 15px;
+        }
+        .footer .copyright {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+
+            }
+            .burger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><span>AGA</span>PITO</a>
+        <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html"class="active">About Me</a>
+        <a href="resume.html">Resume</a>
+        <a href="project.html">Project</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">&#9776;</div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <a href="index.html">Home</a>
+        <a href="about.html"class="active">About Me</a>
+        <a href="resume.html">Resume</a>
+        <a href="project.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
+
+    <section class="about">
+        <div class="about-content">
+            <h1>Hello and welcome!</h1>
+            <p>My name is Fredrick M. Agapito, and I am currently a student pursuing a degree in Bachelor of Science in Information Technology at Eastern Visayas State University, Ormoc City Campus. I have always been passionate about programming, and I am excited to be studying it in depth.</p>
+            <p>I grew up in Ormoc City, Leyte, where I developed a love for technology. In high school, I was involved in Leadership Group, which helped me develop my leadership and teamwork skills.</p>
+            <p>In my free time, I enjoy playing sports, such as basketball or badminton. I also like to play online games.</p>
+            <p>My ultimate goal is to finish my study , and I am working hard to achieve it. I believe that with dedication, hard work, and a positive attitude, anything is possible.</p>
+            <p>Thank you for taking the time to read my about me page. If you have any questions or would like to connect, please feel free to reach out to me.</p>
+
+       
+    </section>
+
+
+    <footer class="footer">
+
+
+        <div class="social">
+            <a href="https://www.facebook.com/fredrick.agapitomagdalaga"><i class='bx bxl-facebook-circle'></i></a>
+            <a href="https://t.me/Agapito_Fred"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="#"><i class='bx bxl-twitter' ></i></a>
+            <a href="https://www.instagram.com/invites/contact/?igsh=cjnumjbysr54&utm_content=hvaq1ee"><i class='bx bxl-instagram-alt' ></i></a>
+        </div>
+
+
+        <ul class="link">
+            <li>
+                <a href="#">FAQ</a>
+            </li>
+            <li>
+                <a href="#">Service</a>
+            </li>
+            <li>
+                <a href="#">About Me</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">Privacy Policy</a>
+            </li>
+        </ul>
+
+
+        <p class="copyright">© 2024 Fredrick Agapito | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
+<script>
+    function toggleMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        if (mobileNav.style.right === '0%') {
+            mobileNav.style.right = '-100%';
+        } else {
+            mobileNav.style.right = '0%';
+        }
+    }
+    function navigateTo(page) {
+        if (page === 'resume') {
+            window.location.href = 'resume.html';
+        } else if (page === 'about') {
+            window.location.href = 'about.html';
+        }
+    }
+</script>
+
+
+</body>
+</html>
